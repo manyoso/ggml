@@ -41,11 +41,11 @@ endif()
 if (UNAME_S MATCHES "Darwin")
     if (NOT UNAME_P MATCHES "arm")
         execute_process(COMMAND sysctl -n hw.optional.arm64 OUTPUT_VARIABLE SYSCTL_M)
-	if (SYSCTL_M MATCHES "1")
+    if (SYSCTL_M MATCHES "1")
             #set(UNAME_P "arm")
             #set(UNAME_M "arm64")
-	    message(WARNING "Your arch is announced as x86_64, but it seems to actually be ARM64. Not fixing that can lead to bad performance. For more info see: https://github.com/ggerganov/whisper.cpp/issues/66\#issuecomment-#1282546789")
-	endif()
+        message(WARNING "Your arch is announced as x86_64, but it seems to actually be ARM64. Not fixing that can lead to bad performance. For more info see: https://github.com/ggerganov/whisper.cpp/issues/66\#issuecomment-#1282546789")
+    endif()
     endif()
 endif()
 
@@ -150,7 +150,7 @@ if (GGML_OPENBLAS)
 
         set(GGML_EXTRA_LIBS  ${GGML_EXTRA_LIBS}  ${OPENBLAS_LIB})
         set(GGML_EXTRA_INCS  ${GGML_EXTRA_INCS}  ${OPENBLAS_INC})
-	set(GGML_EXTRA_FLAGS ${GGML_EXTRA_FLAGS} -DGGML_USE_OPENBLAS)
+    set(GGML_EXTRA_FLAGS ${GGML_EXTRA_FLAGS} -DGGML_USE_OPENBLAS)
     else()
         message(WARNING "OpenBLAS not found")
     endif()
@@ -197,7 +197,7 @@ if (MINGW)
         )
 endif()
 
-install(TARGETS ${TARGET}
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib/static
-    )
+#install(TARGETS ${TARGET}
+#    LIBRARY DESTINATION lib
+#    ARCHIVE DESTINATION lib/static
+#    )
